@@ -65,3 +65,21 @@ def assertIvyIsRunningInDemoMode() {
   }
 }
 
+def isIvyRunningInDemoMode() {
+  isIvyRunningInDemoModeOnPort(8080)
+}
+
+def isIvyRunningInDemoModeOnPort(port) {
+  def response = sh (script: "wget -qO- http://localhost:$port/info/index.jsp", returnStdout: true)
+  return response.contains('Demo Mode')
+}
+
+def isIvyRunningInMaintenanceMode() {
+  isIvyRunningInMaintenanceModeOnPort(8080)
+}
+
+def isIvyRunningInMaintenanceModeOnPort(port) {
+  def response = sh (script: "wget -qO- http://localhost:$port/info/index.jsp", returnStdout: true)
+  return response.contains('Maintenance Mode')
+}
+

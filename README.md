@@ -66,6 +66,6 @@ To run the samples with the AWS Load Balancer Controller you need to:
 
 All these samples are shipped with a limited demo license. You are able to run the portal application.
 
-## Docker Compose
+## Docker Samples
 
 Also have a look at our [docker samples](https://github.com/axonivy/docker-samples)
