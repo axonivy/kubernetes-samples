@@ -51,6 +51,10 @@ To run the samples with the Ingress you need to:
 2. Run kustomize with the overlays/nginx-ingress directory
 
         kubectl kustomize --load-restrictor="LoadRestrictionsNone" overlays/nginx-ingress > kubernetes.yaml
+		
+3. Create and start the kubernetes setup
+
+        kubectl apply -f kubernetes.yaml
 
 #### AWS Load Balancer Controller
 
@@ -61,6 +65,10 @@ To run the samples with the AWS Load Balancer Controller you need to:
 2. Run kustomize with the overlay/aws-load-balancer
 
         kubectl kustomize --load-restrictor="LoadRestrictionsNone" overlays/aws-load-balancer > kubernetes.yaml
+		
+3. Create and start the kubernetes setup
+
+        kubectl apply -f kubernetes.yaml		
 
 ## License
 
