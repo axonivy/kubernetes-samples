@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivy
+  template:
+    metadata:
+      labels:
+        app: ivy
+    spec:
+      containers:
+        - name: ivy
+          image: axonivy/axonivy-engine:dev
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /system/health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 3
+          env:
+            - name: ivy_Administrators_admin_Password
+              valueFrom:
+                secretKeyRef:
+                  name: ivy-secret
+                  key: ADMIN_PASSWORD
+
+            - name: ivy_SystemDb_Url
+              value: jdbc:postgresql://postgres:5432/mydb
+
+            - name: ivy_SecuritySystems.default.DocumentStorage.Name
+              value: s3
+            
+            - name: ivy_SecuritySystems.default.DocumentStorage.Config.Url
+              value: http://minio:9000
+
+            - name: ivy_SecuritySystems.default.DocumentStorage.Config.AccessKey
+              value: admin
+            
+            - name: ivy_SecuritySystems.default.DocumentStorage.Config.SecretKey
+              value: adminadmin
+
+            - name: ivy_SystemDb_UserName
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: USER
+
+            - name: ivy_SystemDb_Password
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: PASSWORD
+            
+            - name: ivy_SearchEngine_ExternalServer_Url
+              value: http://opensearch:9200
+            
+            - name: ivy_Licence
+              valueFrom: 
+                configMapKeyRef:
+                  name: ivy-licence
+                  key: IVY_LICENCE              
+
+          volumeMounts:
+            - name: ivy-data
+              mountPath: /ivy/data
+
+            - name: ivy-applications
+              mountPath: /ivy/applications
+
+      volumes:
+        - name: ivy-data
+          persistentVolumeClaim:
+            claimName: ivy-data
+
+        - name: ivy-applications
+          persistentVolumeClaim:
+            claimName: ivy-applications
+
