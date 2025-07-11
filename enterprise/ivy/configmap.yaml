@@ -42,11 +42,11 @@ data:
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="urn:org:jgroups http://www.jgroups.org/schema/jgroups.xsd"
         >
-    <UDP
-         mcast_port="${jgroups.udp.mcast_port:45588}"
+    <TCP bind_addr="${jgroups.bind_addr:site_local}"
+         bind_port="${jgroups.bind_port:7800}"
          thread_pool.min_threads="0"
          thread_pool.max_threads="200"
-         thread_pool.keep_alive_time="30s"/>
+         thread_pool.keep_alive_time="30000"/>
     <RED/>
     <!-- dns_address="10.96.0.10" -->
     <dns.DNS_PING        

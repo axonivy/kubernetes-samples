@@ -1,5 +1,9 @@
 # Axon Ivy Engine Enterprise
 
+Create an own namespaces call `sandbox` to make this example work. See
+[here](../README.md) how you can create a namespace and connect to it with
+`kubectl`.
+
 ```bash
 # deploy everything
 kubectl apply -k .
