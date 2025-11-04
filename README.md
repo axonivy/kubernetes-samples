@@ -55,6 +55,10 @@ And read the `README.md` in that directory.
 
 All these samples are shipped with a limited demo license. You are able to run the portal application.
 
+> [!NOTE]  
+> All credentials in this repository are for demo purposes and must be changed when used in production.
+> Please do not report any of these in the bug bounty program.
+
 ## Docker Samples
 
 Also have a look at our [docker samples](https://github.com/axonivy/docker-samples)
