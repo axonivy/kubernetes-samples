@@ -24,8 +24,15 @@ pipeline {
     stage('test-kubernetes') {
       steps {
         script {
+          // If you have problems with SSL certificates on test-kube01 do the following:
+          // 1. Connect with ssh to test-kube01.ivyteam.io
+          // 2. Check the certs: 
+          // > sudo microk8s refresh-certs -c
+          // 3. Renew the certs: 
+          // > sudo microk8s refresh-certs --cert server.crt
+          // > sudo microk8s refresh-certs --cert front-proxy-client.crt
           withCredentials([file(credentialsId: 'test-kube01', variable: 'config')]) {
-            docker.image('alpine/k8s:1.21.12').inside('-v $config:/.kube/config') {
+            docker.image('alpine/k8s:1.32.11').inside('-v $config:/.kube/config') {
               def kubernetes = load 'kubernetes.groovy'
               examples().each { entry ->
                 def example = entry.key
