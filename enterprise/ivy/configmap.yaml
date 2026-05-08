@@ -6,21 +6,21 @@ data:
   LICENCE: |
     [Begin Licence]
     #Licence for AxonIvy Axon Ivy Engine (Enterprise Edition)
-    #Thu Jul 03 11:43:58 CEST 2025
-    licence.keyversion=axonivy/13000
-    licence.number=XLSEE-197C-FABE-480C
+    #Fri May 08 12:12:29 CEST 2026
+    licence.keyversion=axonivy/14000
+    licence.number=XLSEE-19E0-7130-CF7N
     licence.type=Enterprise Edition
     licence.valid.until=2027-11-03
     licencee.individual=www.axonivy.com
     licencee.organisation=Axon Ivy AG
     product.name=Axon Ivy Engine
-    public.urls=localhost,*.app.github.dev,raccoon.local
+    public.urls=localhost,*.localhost,*.app.github.dev,raccoon.local
     server.nodes.limit=5
     server.sessions.limit=2
     server.users.limit=4
     [End Licence]
     [Begin Signature]
-    MCwCFARlfvRkU3gpjodGPST63oPc7J0tAhQkMeLIzHEKh+8sknIet3wN0wNjIQ==
+    MCwCFArxN9p21dgwCOb0IypnTstif/leAhRT59dJQWK6ASr4KNeL4YunlU9Daw==
     [End Signature]
 
   LOG4J2: |
